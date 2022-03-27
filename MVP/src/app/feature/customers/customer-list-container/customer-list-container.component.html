@@ -1,0 +1,3 @@
+<p>customer-list-container works!</p>
+<!-- customer liat presentation-->
+<app-customer-list-presentation [customerList]="$customerList | async" (delete) = "deleteCustomer($event)"></app-customer-list-presentation>

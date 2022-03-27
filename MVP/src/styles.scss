@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/base/index";
+
+
+@import "assets/scss/vendor/bootstrap-base";
+@import "assets/scss/vendor/bootstrap-components";
+
+
+//import component
+@import "assets/scss/component/index";
+
+//impoert layout
+@import "assets/scss/layout/index";
+@import "assets/scss/utilities/index";
+
+@import '@angular/cdk/overlay-prebuilt.css';

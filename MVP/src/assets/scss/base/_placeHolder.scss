@@ -1,0 +1,27 @@
+//crate a placeholder for fix-width and height
+%fix-view{
+    width: 100%;
+    height: 100%;
+}
+
+//Humberger-menu sidebar
+%line {
+    position: relative;
+    display: inline-block;
+    height: 0.3rem;
+    cursor: pointer;
+    width: 1.8rem;
+    transform-origin: left;
+    margin-bottom: 0.14rem;
+    background-color: $primary;
+    transition:all 0.3s ease-in-out;
+    
+}
+
+%transtion{
+    transition: all 0.5s ease-in-out;
+}
+%boxshadow{
+    box-shadow: 0px 0px 19px 0px rgba(255, 0, 0, 0.3);
+
+}

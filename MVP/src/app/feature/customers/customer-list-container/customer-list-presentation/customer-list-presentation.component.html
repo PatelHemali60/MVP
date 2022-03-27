@@ -1,0 +1,48 @@
+<p>customer-list-presentation works!</p>
+<div class="main-heading bg-white d-flex align-items-center px-4">
+    <h4>List of Users</h4>
+  </div>
+  
+  <div class="py-4">
+    <div class="d-flex justify-content-between">
+        <!-- <input type="text" placeholder="Search User" [formControl]="search"> -->
+        <button class="btn btn-dark" routerLink="../add">+ Add</button>
+        <!-- <div class="d-flex align-items-center">
+          <button class="btn btn-success" (click)="openFilter()">Filter</button><span *ngIf="FilterActive" class="ms-2 text-danger bg-danger filter-active"></span>
+        </div> -->
+      </div>
+    </div>
+    
+    <table class="table caption-top border">
+      <thead>
+        <tr>
+          <th scope="col">User Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">email</th>
+          <th scope="col">category</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="align-middle" *ngFor="let item of customerList">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.age }}</td>
+          <td>{{ item.email}}</td>
+          <td>{{ item.category }}</td>
+          <td>{{ item.gender }}</td>
+          <td>
+            <!-- <button class="btn btn-primary me-2" (click)="onEdit(item.id)">Edit</button> -->
+            <button class="btn btn-danger" (click)="onDelete(item.id)">Delete</button>
+          </td>
+        </tr>
+       
+      </tbody>
+      <tfoot>
+        <tr class="w-100"  *ngIf="!customerList?.length">
+          <td colspan="7" class="text-center text-danger">No record Found</td>
+        </tr>
+      </tfoot>
+    </table>

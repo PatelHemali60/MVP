@@ -1,0 +1,64 @@
+<!-- <p>sidebar works!</p> -->
+<div class="main-wrapper d-flex">
+    <!-- sidebar:start -->
+    <input type="checkbox" id="toggle">
+    <aside class="sidebar d-flex flex-column h-100">
+        <div class="sidebar-header d-flex  align-items-center px-2 border-bottom">
+            <div class="toggle-btn d-flex flex-column">
+                <label for="toggle" class="line"></label>
+                <label for="toggle" class="line-1"></label>
+                <label for="toggle" class="line-2"></label>
+            </div>
+            <div class="logo">
+                <h1 class="title">Angular Task</h1>
+            </div>
+        </div>
+
+        <!-- user:profile:start -->
+        <div class="user-profile d-flex  align-items-center px-2 border-bottom py-4">
+            <div class="user-image d-flex  align-items-center">
+                <figure class="mb-0">
+                    <img src="../../../../assets/images/img_avatar.jpg" alt="profile_image">
+                </figure>
+            </div>
+            <div class="user-details">
+                <h5>Hemali Patel</h5>
+                <a href="#" class="text-info">patelhemu60@gmail.com</a>
+            </div>
+        </div>
+        <!-- user:profile:end -->
+
+        <!-- Navbar:start -->
+        <div class="navbar-wrap px-2 py-4">
+            <ul class="nav flex-column">
+
+
+                <li class="nav-item"><a class="nav-link" appChangeColor routerLink="cdk" routerLinkActive="active-link">
+                        <span class="icon icon-folder"></span>
+                        <span class="nav-title ps-4">Cdk</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" appChangeColor routerLink="ngtemplate" routerLinkActive="active-link">
+                        <span class="icon icon-folder"></span>
+                        <span class="nav-title ps-4">Ng Templates</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" appChangeColor routerLink="customers" routerLinkActive="active-link">
+                        <span class="icon icon-folder"></span>
+                        <span class="nav-title ps-4">MVP pattern</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Navbar:end -->
+    </aside>
+    <!-- sidebar:end -->
+
+    <!-- start:main-display content -->
+    <div class="main-content flex-grow-1 px-5">
+        <router-outlet></router-outlet>
+    </div>
+    <!-- end:main-display content -->
+
+</div>
