@@ -1,0 +1,148 @@
+{
+  "department": [
+    {
+      "id": 1,
+      "name": "UI"
+    },
+    {
+      "id": 2,
+      "name": "FrontEnd"
+    },
+    {
+      "id": 3,
+      "name": "MobileDevlopment"
+    },
+    {
+      "id": 4,
+      "name": "Ios"
+    },
+    {
+      "id": 5,
+      "name": ".Net"
+    }
+  ],
+  "Customer": [
+    {
+      "name": "viru",
+      "age": "25",
+      "email": "p@gmail.com",
+      "gender": "Male",
+      "category": "Home & Kitchen",
+      "id": 1
+    },
+    {
+      "name": "dhoni",
+      "age": "45",
+      "email": "dhoni@gmail.com",
+      "gender": "Male",
+      "category": "Electronics",
+      "id": 4
+    },
+    {
+      "name": "virat",
+      "age": "26",
+      "email": "virat123@gmail.com",
+      "gender": "Male",
+      "category": "Software",
+      "id": 5
+    },
+    {
+      "name": "jigar",
+      "age": "22",
+      "email": "jigar@gmail.com",
+      "gender": "Male",
+      "category": "Electronics",
+      "id": 6
+    },
+    {
+      "name": "nirali",
+      "age": "22",
+      "email": "nirali@gmail.com",
+      "gender": "Female",
+      "category": "Electronics",
+      "id": 7
+    },
+    {
+      "name": "shefali",
+      "age": "23",
+      "email": "shefali@gmail.com",
+      "gender": "Female",
+      "category": "Electronics",
+      "id": 8
+    },
+    {
+      "name": "pooja",
+      "age": "23",
+      "email": "pooja@gmail.com",
+      "gender": "Female",
+      "category": "Electronics",
+      "id": 9
+    },
+    {
+      "name": "sneha",
+      "age": "25",
+      "email": "sneha@gmail.com",
+      "gender": "Female",
+      "category": "Home & Kitchen",
+      "id": 10
+    },
+    {
+      "name": "hemali",
+      "age": "22",
+      "email": "patelhemali60@gmail.com",
+      "gender": "Female",
+      "category": "Health & Personal Care",
+      "id": 11
+    },
+    {
+      "name": "hemu",
+      "age": "23",
+      "email": "patelhemu60@gmail.com",
+      "gender": "Female",
+      "category": "Software",
+      "id": 12
+    },
+    {
+      "name": "priyanshi",
+      "age": "20",
+      "email": "patelpriyanshi60@gmail.com",
+      "gender": "Female",
+      "category": "Accessories",
+      "id": 13
+    },
+    {
+      "name": "hinal",
+      "age": "24",
+      "email": "patelhinal60@gmail.com",
+      "gender": "Female",
+      "category": "Health & Personal Care",
+      "id": 14
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "Accessories"
+    },
+    {
+      "id": 2,
+      "name": "Electronics"
+    },
+    {
+      "id": 3,
+      "name": "Home & Kitchen"
+    },
+    {
+      "id": 4,
+      "name": "Health & Personal Care"
+    },
+    {
+      "id": 5,
+      "name": "Software"
+    },
+    {
+      "id": 6,
+      "name": "Video Games"
+    }
+  ]
+}

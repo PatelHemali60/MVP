@@ -5,29 +5,30 @@ import { CustomerListContainerComponent } from './customer-list-container/custom
 import { CustomersComponent } from './customers.component';
 
 const routes: Routes = [
-  
-  { path: '', component: CustomersComponent,
-  children:[
-    {
-      path: 'List',
-      component: CustomerListContainerComponent,
-    },
-    // {
-    //   path: 'add',
-    //   component: CustomerFormContainerComponent
-    // },
-    // {
-    //   path: 'edit/:id',
-    //   component: CustomerFormContainerComponent
-    // },
-    {
-      path: '',
-      pathMatch: 'full',
-      redirectTo: 'List'
-    }
-  ]
-
-},];
+  { 
+    path: '', 
+    component: CustomersComponent,
+    children: [
+      {
+        path: 'list',
+        component: CustomerListContainerComponent
+      },
+      {
+        path: 'add',
+        component: CustomerFormContainerComponent
+      },
+      {
+        path: 'edit/:id',
+        component: CustomerFormContainerComponent
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'list'
+      }
+    ]
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

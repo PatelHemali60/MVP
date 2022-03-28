@@ -1,17 +1,22 @@
-import { ChangeDetectionStrategy, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, EventEmitter, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../../customer.model';
 import { CustomerListService } from '../customer-list-presenter/customer-list.service';
+import { Router } from '@angular/router';
+import { FilterPresenterService } from './filter-presenter/filter-presenter.service';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-customer-list-presentation',
   templateUrl: './customer-list-presentation.component.html',
   styleUrls: ['./customer-list-presentation.component.scss'],
-  viewProviders: [CustomerListService],
+  viewProviders: [CustomerListService,FilterPresenterService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomerListPresentationComponent implements OnInit {
 
+
+  
 
   @Input() public set customerList(value: Customer[] | null) {
     if (value) {
@@ -21,8 +26,13 @@ export class CustomerListPresentationComponent implements OnInit {
       this._customerList = value;
     }
   }
-  @Output() public delete!: EventEmitter<number> ;
-  FilterActive:boolean = false;
+  @Output() public delete: EventEmitter<number> ;
+  
+  //for activate filter
+  public isActivatedFilter:boolean = false;
+
+  //flag for sorting
+  flag !:number ;
 
 
   //get value of customer list
@@ -35,22 +45,66 @@ export class CustomerListPresentationComponent implements OnInit {
   private _customerListOriginal!:Customer[];
 
 
-  constructor(private customerListPresentationService:CustomerListService,private CDR : ChangeDetectionStrategy) {
-    debugger;
+  constructor(private customerListservice:CustomerListService, private route: Router,
+    private cdr: ChangeDetectorRef,
+    private overlay:Overlay) {
+    // debugger;
+    //intialize delete
+  
+    this.delete = new EventEmitter<number>();
    }
 
   ngOnInit(): void {
-    this.customerListPresentationService.delete$.subscribe((res: number) => this.delete.emit(res),
+    this.customerListservice.delete$.subscribe((res: number) => this.delete.emit(res),
       (error) => { console.log('something went wrong') },
       () => { console.log("Complete") }
     );
+    // this.customerListservice.Filter$.subscribe(res=> 
+    // this._customerList =res);
+
+     //for filter data subscribe here  
+     this.customerListservice.Filter$.subscribe(res => {
+      this.isActivatedFilter =true;
+     //check wathere data is avilabe or not
+
+     this._customerList = res;
+
+     // console.log(newMentorList);  
+     this.cdr.detectChanges();
+   })
+   //flag indication
+   this.flag = 1;
+
   }
+  
 
+ public onEdit(id:number){
+   this.route.navigateByUrl(`customers/edit/${id}`);
 
+ }
 
   //delete method
   public onDelete(id: number) {
-    this.customerListPresentationService.onDelete(id);
+    this.customerListservice.onDelete(id);
+    // this.delete.emit(id);
+  }
+
+  public FilterForm() {
+    // console.log()
+    this.customerListservice.openFilterForm(this._customerList);
+    // this.
+  }
+  
+  //sort table
+  public sortTable(data: any)
+  {
+    if(this.flag === 1){
+      this.flag = -1; 
+    }
+    else{
+      this.flag = 1; 
+    };
+    this._customerList = this.customerListservice.sortData(data.target['innerText'], this._customerList, this.flag);
   }
 
 }

@@ -11,27 +11,27 @@ export class CustomerService {
 
   //get all customer 
   getCustomer():Observable<Customer[]>{
-    return this.http.get<Customer[]>(`${this.baseurl}/customer`)
+    return this.http.get<Customer[]>(`${this.baseurl}/Customer`)
   }
 
   //delete customer
   deleteCustomer(id:number):Observable<number>{
-    return this.http.delete<number>(`${this.baseurl}/customer/${id}`)
+    return this.http.delete<number>(`${this.baseurl}/Customer/${id}`)
   }
 
   //post a new customer
   addUser(user:CustomerForm):Observable<CustomerForm>{
-    return this.http.post<CustomerForm>(`${this.baseurl}/customer`,user)
+    return this.http.post<CustomerForm>(`${this.baseurl}/Customer`,user)
   }
 
   //get data of perticular id
   getCustomerById(id:string):Observable<Customer>{
-    return this.http.get<Customer>(`${this.baseurl}/customer/${id}`)
+    return this.http.get<Customer>(`${this.baseurl}/Customer/${id}`)
   }
 
   //editCustomer
   editCustomer(user:CustomerForm,id:string):Observable<CustomerForm>{
-    return this.http.put<CustomerForm>(`${this.baseurl}/customer/${id}`,user)
+    return this.http.put<CustomerForm>(`${this.baseurl}/Customer/${id}`,user)
   }
 
   //get customer categories

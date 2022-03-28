@@ -1,1 +1,175 @@
 <p>customer-form-presentation works!</p>
+
+
+
+<div class="container-fluid p-5 divform h-100 bg-secondary text-white">
+
+    <div class="form-modal rounded">
+        <div class="d-flex justify-content-between">
+            <h2 class="text-center">{{ formTitle }}</h2>
+            <!-- <a (click)="onCancel()" class="text-decoration-none">&times;</a> -->
+        </div>
+        <form [formGroup]="customerForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" formControlName="name">
+                <!-- <div *ngIf="( mentorFormControl.name.dirty ||  mentorFormControl.name.touched) && mentorFormControl.name.invalid
+              || isFormSubmitted &&  mentorFormControl.name.invalid" class="p-1">
+              <div *ngIf="!Mentors['name']?.valid && Mentors['name']?.touched" class="text-danger">
+                Name is required
+              </div> -->
+                <div *ngIf="( customerFormControl['name'].dirty ||   customerFormControl['name'].touched ) &&   customerFormControl['name'].invalid
+              || isFormSubmitted &&   customerFormControl['name'].invalid" class="p-1 text-danger">* This Field is
+                    Required
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">email</label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+                <!-- <div *ngIf="( mentorFormControl.name.dirty ||  mentorFormControl.name.touched) && mentorFormControl.name.invalid
+              || isFormSubmitted &&  mentorFormControl.name.invalid" class="p-1">
+              <div *ngIf="!Mentors['name']?.valid && Mentors['name']?.touched" class="text-danger">
+                Name is required
+              </div> -->
+                <div *ngIf="( customerFormControl['email'].dirty ||   customerFormControl['email'].touched ) &&   customerFormControl['email'].invalid
+              || isFormSubmitted &&   customerFormControl['email'].invalid" class="p-1 text-danger">* This Field is
+                    Required
+                </div>
+
+            </div>
+
+
+            <!-- Age-->
+            <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="text" class="form-control" id="age" formControlName="age">
+
+                <div *ngIf="( customerFormControl['age'].dirty ||   customerFormControl['age'].touched ) &&   customerFormControl['age'].invalid
+                || isFormSubmitted &&   customerFormControl['age'].invalid" class="p-1 text-danger">* This Field is
+                      Required
+                  </div>
+
+            </div>
+
+            <!-- end gender-->
+
+            <!-- gender-->
+            <div class="mb-3">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male"
+                        formControlName="gender">
+                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female"
+                        formControlName="gender">
+                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                </div>
+                <div *ngIf="( customerFormControl['gender'].dirty ||   customerFormControl['gender'].touched ) &&   customerFormControl['gender'].invalid
+              || isFormSubmitted &&   customerFormControl['gender'].invalid" class="p-1 text-danger">* This Field is
+                    Required </div>
+            </div>
+
+            <!-- end gender-->
+            <!-- categories-->
+            <div class="mb-3">
+                <label for="age" class="form-label pe-4">Select categories</label>
+                <div class="form-check form-check-inline">
+                    <select name="categories" id="categories" formControlName="category">
+                        <option value="" selected>Select Category</option>
+                        <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div *ngIf="( customerFormControl['category'].dirty ||   customerFormControl['category'].touched ) &&   customerFormControl['category'].invalid
+            || isFormSubmitted &&   customerFormControl['category'].invalid" class="p-1 text-danger">* This Field is
+                Required </div>
+
+            <!--end categories-->
+
+            <button type="submit" class="btn btn-primary me-2 btn-lg" (click)="onSubmit()">Submit</button>
+            <button type="button" class="btn btn btn-success  btn-lg" (click)="onCancel()">Cancel</button>
+
+        </form>
+
+    </div>
+</div>
+
+
+
+<!-- form continer
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <div class="form-modal rounded p-3">
+                <div class="d-flex justify-content-between">
+                    <h2 class="text-center"></h2> -->
+                    <!-- <a (click)="onCancel()" class="text-decoration-none">&times;</a> -->
+                <!-- </div>
+                <form [formGroup]="customerForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" formControlName="name"> -->
+                        <!-- <div *ngIf="(userFormControl.name.dirty || userFormControl.name.touched) && userFormControl.name.invalid
+                || isFormSubmitted && userFormControl.name.invalid" class="p-1">
+                <div *ngIf="userFormControl.name.errors?.required" class="text-danger">
+                  Name is required
+                </div>
+              </div> -->
+                    <!-- </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="text" class="form-control" id="age" formControlName="age"> -->
+                        <!-- <div *ngIf="(userFormControl.age.dirty || userFormControl.age.touched) && userFormControl.age.invalid
+                || isFormSubmitted && userFormControl.age.invalid" class="p-1">
+                <div *ngIf="userFormControl.age.errors?.required" class="text-danger">
+                  Age is required
+                </div>
+              </div> -->
+                    <!-- </div>
+                    <div class="mb-3">
+                        <label>email</label><br>
+                        <input type="text" class="user-input form-control" name="email" formControlName="email"
+                            placeholder="enter your email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label pe-4">Gender </label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male"
+                                formControlName="gender">
+                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female"
+                                formControlName="gender">
+                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                        </div> -->
+                        <!-- <div *ngIf="(userFormControl.gender.dirty || userFormControl.gender.touched) && userFormControl.gender.invalid
+                || isFormSubmitted && userFormControl.gender.invalid" class="p-1">
+                <div *ngIf="userFormControl.gender.errors?.required" class="text-danger">
+                  Gender is required
+                </div>
+              </div> -->
+                    <!-- </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label pe-4">Select categories</label>
+                        <div class="form-check form-check-inline">
+                            <select name="categories" id="categories" formControlName="category">
+                                <option value="" selected>Select Category</option>
+                                <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2" (click)="onSubmit()">Submit</button>
+                    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div> -->
+<!-- end of form continer-->

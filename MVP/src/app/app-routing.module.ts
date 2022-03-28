@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path:'',redirectTo:'customers',pathMatch:'full'}, 
+  { path: '', pathMatch: 'full', redirectTo: 'customers', },
   { path: 'customers', loadChildren: () => import('./feature/customers/customers.module').then(m => m.CustomersModule) }];
 
 @NgModule({

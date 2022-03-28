@@ -5,16 +5,17 @@
   
   <div class="py-4">
     <div class="d-flex justify-content-between">
-        <!-- <input type="text" placeholder="Search User" [formControl]="search"> -->
-        <button class="btn btn-dark" routerLink="../add">+ Add</button>
-        <!-- <div class="d-flex align-items-center">
-          <button class="btn btn-success" (click)="openFilter()">Filter</button><span *ngIf="FilterActive" class="ms-2 text-danger bg-danger filter-active"></span>
-        </div> -->
+        <input type="text" placeholder="Search User">
+       
+        <div class="d-flex align-items-center ">
+          <button class="btn btn-primary btn-lg me-4" routerLink="../add">+ Add</button>
+          <button class=" btn-dark btn-lg" (click)=" FilterForm()"><span class="icon icon-radio-checked p-2"></span>FilterData</button><span *ngIf="isActivatedFilter" class="badge position-absolute border bg-danger  "></span>
+        </div>
       </div>
     </div>
     
-    <table class="table caption-top border">
-      <thead>
+    <table class="table caption-top border table-light"  (click)="sortTable($event)">
+      <thead class="p-5">
         <tr>
           <th scope="col">User Id</th>
           <th scope="col">Name</th>
@@ -34,8 +35,8 @@
           <td>{{ item.category }}</td>
           <td>{{ item.gender }}</td>
           <td>
-            <!-- <button class="btn btn-primary me-2" (click)="onEdit(item.id)">Edit</button> -->
-            <button class="btn btn-danger" (click)="onDelete(item.id)">Delete</button>
+            <button class="btn btn-primary me-2" (click)="onEdit(item.id)"> <span class="icon icon-pencil2"></span> </button>
+            <button class="btn btn-danger" (click)="onDelete(item.id)"> <span class="icon icon-bin"></span></button>
           </td>
         </tr>
        
