@@ -123,18 +123,18 @@ export class CustomerListService {
 //filter data
 public sortData(field: string, customer: Customer[], flag: number) {
   switch (field) {
-    case 'name':
+    case 'Name':
       return (flag === 1) ? customer?.sort((data, second) => (data.name < second.name) ? -1 : (data.name > second.name) ? 1 : 0) : customer?.sort((first, second) => (first.name < second.name) ? 1 : (first.name > second.name) ? -1 : 0);
       break;
-    case 'email':
+    case 'Email':
       return (flag === 1) ? customer?.sort((first, second) => (first.email < second.email) ? -1 : (first.email > second.email) ? 1 : 0) : customer?.sort((first, second) => (first.email < second.email) ? 1 : (first.email > second.email) ? -1 : 0);
       break;
-    case 'AGE':
+    case 'Age':
       return (flag === 1) ? customer?.sort((first, second) => (first.age < second.age) ? -1 : (first.age > second.age) ? 1 : 0) : customer?.sort((first, second) => (first.age < second.age) ? 1 : (first.age > second.age) ? -1 : 0);
       break;
-    // case 'gender':
-    //   return (flag === 1) ? customer?.sort((first, second) => (first.birthdate < second.birthdate) ? -1 : (first.birthdate > second.birthdate) ? 1 : 0) : customer?.sort((first, second) => (first.birthdate < second.birthdate) ? 1 : (first.birthdate > second.birthdate) ? -1 : 0);
-    //   break;
+    case 'Gender':
+      return (flag === 1) ? customer?.sort((first, second) => (first.gender < second.gender) ? -1 : (first.gender > second.gender) ? 1 : 0) : customer?.sort((first, second) => (first.gender < second.gender) ? 1 : (first.gender > second.gender) ? -1 : 0);
+      break;
     default:
       return customer;
       break;

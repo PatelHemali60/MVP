@@ -10,13 +10,13 @@ import { Overlay } from '@angular/cdk/overlay';
   selector: 'app-customer-list-presentation',
   templateUrl: './customer-list-presentation.component.html',
   styleUrls: ['./customer-list-presentation.component.scss'],
-  viewProviders: [CustomerListService,FilterPresenterService],
+  viewProviders: [CustomerListService, FilterPresenterService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomerListPresentationComponent implements OnInit {
 
 
-  
+
 
   @Input() public set customerList(value: Customer[] | null) {
     if (value) {
@@ -26,13 +26,17 @@ export class CustomerListPresentationComponent implements OnInit {
       this._customerList = value;
     }
   }
-  @Output() public delete: EventEmitter<number> ;
-  
+  @Output() public delete: EventEmitter<number>;
+
   //for activate filter
-  public isActivatedFilter:boolean = false;
+  public isActivatedFilter: boolean = false;
 
   //flag for sorting
-  flag !:number ;
+  flag !: number;
+
+  //for paginantion declare variable
+  curPage: number;
+  itemperpage: number;
 
 
   //get value of customer list
@@ -42,17 +46,21 @@ export class CustomerListPresentationComponent implements OnInit {
 
   //declare customerList 
   private _customerList!: Customer[];
-  private _customerListOriginal!:Customer[];
+  private _customerListOriginal!: Customer[];
 
 
-  constructor(private customerListservice:CustomerListService, private route: Router,
+  constructor(private customerListservice: CustomerListService, private route: Router,
     private cdr: ChangeDetectorRef,
-    private overlay:Overlay) {
+    private overlay: Overlay) {
     // debugger;
+
     //intialize delete
-  
     this.delete = new EventEmitter<number>();
-   }
+
+    //for pagination 
+    this.curPage = 1;
+    this.itemperpage = 5; // any page size you want 
+  }
 
   ngOnInit(): void {
     this.customerListservice.delete$.subscribe((res: number) => this.delete.emit(res),
@@ -62,26 +70,26 @@ export class CustomerListPresentationComponent implements OnInit {
     // this.customerListservice.Filter$.subscribe(res=> 
     // this._customerList =res);
 
-     //for filter data subscribe here  
-     this.customerListservice.Filter$.subscribe(res => {
-      this.isActivatedFilter =true;
-     //check wathere data is avilabe or not
+    //for filter data subscribe here  
+    this.customerListservice.Filter$.subscribe(res => {
+      this.isActivatedFilter = true;
 
-     this._customerList = res;
+      //check wathere data is avilabe or not
+      this._customerList = res;
 
-     // console.log(newMentorList);  
-     this.cdr.detectChanges();
-   })
-   //flag indication
-   this.flag = 1;
+      // console.log(newMentorList);  
+      this.cdr.detectChanges();
+    })
+    //flag indication
+    this.flag = 1;
 
   }
-  
 
- public onEdit(id:number){
-   this.route.navigateByUrl(`customers/edit/${id}`);
 
- }
+  public onEdit(id: number) {
+    this.route.navigateByUrl(`customers/edit/${id}`);
+
+  }
 
   //delete method
   public onDelete(id: number) {
@@ -94,17 +102,23 @@ export class CustomerListPresentationComponent implements OnInit {
     this.customerListservice.openFilterForm(this._customerList);
     // this.
   }
-  
+
   //sort table
-  public sortTable(data: any)
-  {
-    if(this.flag === 1){
-      this.flag = -1; 
+  public sortTable(data: any) {
+    console.log(data, 'heelo');
+    if (this.flag === 1) {
+      this.flag = -1;
     }
-    else{
-      this.flag = 1; 
+    else {
+      this.flag = 1;
     };
     this._customerList = this.customerListservice.sortData(data.target['innerText'], this._customerList, this.flag);
   }
+
+//fucntion for paginantion
+  numberOfPages(){
+    return Math.ceil(this.customerList.length / this.itemperpage);
+  };
+  //  numofpage :any =  this.numberOfPages();
 
 }

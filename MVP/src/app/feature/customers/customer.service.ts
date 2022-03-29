@@ -9,6 +9,12 @@ export class CustomerService {
   baseurl = environment.baseURL;
   constructor(private http:HttpClient) { }
 
+
+  // //get all customer 
+  // getCustomer(pageno:number):Observable<Customer[]>{
+  //   return this.http.get<Customer[]>(`${this.baseurl}/Customer?page= ' + pageno +'&limit=`)
+  // }
+
   //get all customer 
   getCustomer():Observable<Customer[]>{
     return this.http.get<Customer[]>(`${this.baseurl}/Customer`)

@@ -1,49 +1,87 @@
-<p>customer-list-presentation works!</p>
+<!-- <p>customer-list-presentation works!</p> -->
 <div class="main-heading bg-white d-flex align-items-center px-4">
-    <h4>List of Users</h4>
-  </div>
-  
-  <div class="py-4">
-    <div class="d-flex justify-content-between">
-        <input type="text" placeholder="Search User">
-       
-        <div class="d-flex align-items-center ">
-          <button class="btn btn-primary btn-lg me-4" routerLink="../add">+ Add</button>
-          <button class=" btn-dark btn-lg" (click)=" FilterForm()"><span class="icon icon-radio-checked p-2"></span>FilterData</button><span *ngIf="isActivatedFilter" class="badge position-absolute border bg-danger  "></span>
-        </div>
-      </div>
+  <h4>Users List</h4>
+</div>
+
+<div class="py-4">
+  <div class="d-flex justify-content-between">
+    <input type="text" placeholder="Search User">
+
+    <div class="d-flex align-items-center ">
+      <button class="btn btn-primary btn-lg me-4" routerLink="../add">+ Add</button>
+      <button class="btn  btn-success btn-lg" (click)=" FilterForm()"><span
+          class="icon icon-radio-checked p-2"></span>FilterData</button><span *ngIf="isActivatedFilter"
+        class="badge position-absolute border bg-danger  "></span>
     </div>
-    
-    <table class="table caption-top border table-light"  (click)="sortTable($event)">
-      <thead class="p-5">
-        <tr>
-          <th scope="col">User Id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Age</th>
-          <th scope="col">email</th>
-          <th scope="col">category</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="align-middle" *ngFor="let item of customerList">
-          <td>{{ item.id }}</td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.age }}</td>
-          <td>{{ item.email}}</td>
-          <td>{{ item.category }}</td>
-          <td>{{ item.gender }}</td>
-          <td>
-            <button class="btn btn-primary me-2" (click)="onEdit(item.id)"> <span class="icon icon-pencil2"></span> </button>
-            <button class="btn btn-danger" (click)="onDelete(item.id)"> <span class="icon icon-bin"></span></button>
-          </td>
-        </tr>
-       
-      </tbody>
-      <tfoot>
-        <tr class="w-100"  *ngIf="!customerList?.length">
-          <td colspan="7" class="text-center text-danger">No record Found</td>
-        </tr>
-      </tfoot>
-    </table>
+  </div>
+</div>
+
+<table class="table caption-top border table-light" (click)="sortTable($event)">
+  <thead class="p-5">
+    <tr>
+      <th scope="col">User Id</th>
+      <th scope="col">Name </th>
+      <th scope="col">Age</th>
+      <th scope="col">Email</th>
+      <th scope="col">category</th>
+      <th scope="col">Gender<span class="icon icon-share"></span></th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="align-middle"
+      *ngFor="let item of customerList   | slice: (curPage * itemperpage) - itemperpage :curPage * itemperpage">
+      <td>{{ item.id }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.age }}</td>
+      <td>{{ item.email}}</td>
+      <td>{{ item.category }}</td>
+      <td>{{ item.gender }}</td>
+      <td>
+        <button class="btn btn-primary me-2" (click)="onEdit(item.id)"> <span class="icon icon-pencil2"></span>
+        </button>
+        <button class="btn btn-danger" (click)="onDelete(item.id)"> <span class="icon icon-bin"></span></button>
+      </td>
+    </tr>
+
+  </tbody>
+  <tfoot>
+    <tr class="w-100" *ngIf="!customerList?.length">
+      <td colspan="7" class="text-center text-danger">No record Found</td>
+    </tr>
+  </tfoot>
+</table>
+
+<!-- paginantion-->
+<!-- dont delete code-->
+<!-- 
+  <nav aria-label="Page navigation example  pagination">
+    <ul class="pagination justify-content-center">
+      <li class="page-item"><button class="btn btn-primary text-white" [disabled]="curPage == 1"
+          (click)="curPage =  1 ">First</button></li>
+      <li class="page-item"> <button class="btn btn-light" [disabled]="curPage == 1"
+          (click)="curPage = curPage - 1">PREV</button></li>
+
+      <li class="page-item">Page {{curPage}} of {{ numberOfPages() }}</li>
+       <li class="page-item"> <button *ngFor="let i of numofpage;">{{i}}</button></li> 
+
+      <li class="page-item">
+        <button [disabled]="curPage >= customerList.length/itemperpage" (click)="curPage = curPage + 1">NEXT</button>
+      </li>
+    </ul>
+  </nav> -->
+<ul class="pagination d-flex justify-content-center m-4">
+  <li [ngClass]="{disabled:curPage == 1}" class="page-item first-item">
+    <a (click)="curPage =  1 " class="page-link">First</a>
+  </li>
+
+  <li [ngClass]="{disabled:curPage >= customerList.length/itemperpage}" class="page-item first-item">
+    <a (click)="curPage = curPage + 1" class="page-link">Prev</a>
+  </li>
+
+  <li class="page-item" class="d-flex align-items-center"><label> Page {{curPage}} of {{ numberOfPages() }}</label> </li>
+
+  <li [ngClass]="{disabled:curPage >= customerList.length/itemperpage}" class="page-item first-item">
+    <a (click)="curPage = curPage + 1" class="page-link ">next</a>
+  </li>
+</ul>
