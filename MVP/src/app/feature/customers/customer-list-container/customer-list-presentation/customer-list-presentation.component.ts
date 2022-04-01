@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../../customer.model';
 import { CustomerListService } from '../customer-list-presenter/customer-list.service';
 import { Router } from '@angular/router';
 import { FilterPresenterService } from './filter-presenter/filter-presenter.service';
-import { Overlay } from '@angular/cdk/overlay';
+
+
 
 @Component({
   selector: 'app-customer-list-presentation',
@@ -29,62 +30,81 @@ export class CustomerListPresentationComponent implements OnInit {
   @Output() public delete: EventEmitter<number>;
 
   //for activate filter
-  public isActivatedFilter: boolean = false;
+  isActivatedFilter: boolean = false;
+
 
   //flag for sorting
   flag !: number;
 
-  //for paginantion declare variable
-  curPage: number;
-  itemperpage: number;
-
-
   //get value of customer list
   public get customerList(): Customer[] {
-    return this._customerList = this._customerList;
+    return this._customerList;
   }
 
   //declare customerList 
   private _customerList!: Customer[];
   private _customerListOriginal!: Customer[];
 
+  //for paginantion
+
+  itemsPerPage: number = 5;
+  allPages: number;
+
+  //search
+  search: string = "";
+  customerListtemp: any = [];
+
 
   constructor(private customerListservice: CustomerListService, private route: Router,
-    private cdr: ChangeDetectorRef,
-    private overlay: Overlay) {
+    private cdr: ChangeDetectorRef) {
     // debugger;
 
     //intialize delete
     this.delete = new EventEmitter<number>();
 
+    this.allPages = 0;
+
     //for pagination 
-    this.curPage = 1;
-    this.itemperpage = 5; // any page size you want 
+    this.isActivatedFilter = false;// any page size you want 
+
+  }
+ 
+  //lifecycel hook for paginantion
+  ngOnChanges(changes: SimpleChanges) {
+    // alert('ok')
+    console.log(changes);
+    if(changes['customerList'].currentValue =! null){
+      
+      this.onPageChange();
+       
+    }
   }
 
   ngOnInit(): void {
+
+
     this.customerListservice.delete$.subscribe((res: number) => this.delete.emit(res),
       (error) => { console.log('something went wrong') },
       () => { console.log("Complete") }
     );
     // this.customerListservice.Filter$.subscribe(res=> 
     // this._customerList =res);
-
+    this.customerList = [];
     //for filter data subscribe here  
     this.customerListservice.Filter$.subscribe(res => {
       this.isActivatedFilter = true;
 
       //check wathere data is avilabe or not
-      this._customerList = res;
+      // this._customerList = res;
 
-      // console.log(newMentorList);  
-      this.cdr.detectChanges();
     })
-    //flag indication
-    this.flag = 1;
-
+  
+     this.allPages = Math.ceil(this.customerList.length / this.itemsPerPage);
+    // console.log(this.allPages, 'heloooooooooo');
+    // this.cdr.detectChanges();
+    // //flag indication
+    // this.flag = 1;
   }
-
 
   public onEdit(id: number) {
     this.route.navigateByUrl(`customers/edit/${id}`);
@@ -100,7 +120,7 @@ export class CustomerListPresentationComponent implements OnInit {
   public FilterForm() {
     // console.log()
     this.customerListservice.openFilterForm(this._customerList);
-    // this.
+
   }
 
   //sort table
@@ -115,10 +135,17 @@ export class CustomerListPresentationComponent implements OnInit {
     this._customerList = this.customerListservice.sortData(data.target['innerText'], this._customerList, this.flag);
   }
 
-//fucntion for paginantion
-  numberOfPages(){
-    return Math.ceil(this.customerList.length / this.itemperpage);
-  };
-  //  numofpage :any =  this.numberOfPages();
+  //pagination
+  onPageChange(page: number = 1): void {
+    console.log(page, 'page');
+
+    const startItem = (page - 1) * this.itemsPerPage;
+    console.log(startItem);
+    console.log(this._customerList);
+    const endItem = page * this.itemsPerPage;
+    this.customerListtemp = this._customerList?.slice(startItem, endItem);
+    console.log(this.customerList.slice(startItem, endItem));
+  }
+
 
 }

@@ -46,16 +46,16 @@ export class CustomerListService {
 
 
   //for get list
-  public getFilteredList(customerList: Customer[], searchItem: string): Customer[] {
-    return customerList?.filter((Customer: Customer) => {
+  public getFilteredList(_customerList: Customer[], searchItem: string): Customer[] {
+    return _customerList?.filter((_Customer: Customer) => {
       if (
-        Customer.id?.toString().includes(searchItem) ||
-        Customer.name?.toLowerCase().includes(searchItem) ||
-        Customer.email?.toLowerCase().includes(searchItem) ||
-        Customer.age ||
-        Customer.gender?.toLowerCase().includes(searchItem)
+        _Customer.id?.toString().includes(searchItem) ||
+        _Customer.name?.toLowerCase().includes(searchItem) ||
+        _Customer.email?.toLowerCase().includes(searchItem) ||
+        _Customer.age ||
+        _Customer.gender?.toLowerCase().includes(searchItem)
       ) {
-        return Customer;
+        return _Customer;
       }
       return false;
     });
@@ -66,8 +66,8 @@ export class CustomerListService {
 
   public openFilterForm(currentList: Customer[]) {
 
-    console.log(currentList, 'prenster');
-
+    console.log(currentList, 'customer list data.....');
+debugger
     let componentRef: ComponentRef<FilterPresenatationComponent>;
     let overlayRef: OverlayRef;
     // set overlay config
@@ -93,7 +93,7 @@ export class CustomerListService {
     componentRef.instance.addData.subscribe((newList: Customer[]) => {
 
       //logic for filter data 
-      console.log(newList,'new list data');
+      console.log(newList, 'new list data');
 
       let dataKey = Object.keys(currentList[0]);
 
@@ -120,26 +120,26 @@ export class CustomerListService {
 
   }
 
-//filter data
-public sortData(field: string, customer: Customer[], flag: number) {
-  switch (field) {
-    case 'Name':
-      return (flag === 1) ? customer?.sort((data, second) => (data.name < second.name) ? -1 : (data.name > second.name) ? 1 : 0) : customer?.sort((first, second) => (first.name < second.name) ? 1 : (first.name > second.name) ? -1 : 0);
-      break;
-    case 'Email':
-      return (flag === 1) ? customer?.sort((first, second) => (first.email < second.email) ? -1 : (first.email > second.email) ? 1 : 0) : customer?.sort((first, second) => (first.email < second.email) ? 1 : (first.email > second.email) ? -1 : 0);
-      break;
-    case 'Age':
-      return (flag === 1) ? customer?.sort((first, second) => (first.age < second.age) ? -1 : (first.age > second.age) ? 1 : 0) : customer?.sort((first, second) => (first.age < second.age) ? 1 : (first.age > second.age) ? -1 : 0);
-      break;
-    case 'Gender':
-      return (flag === 1) ? customer?.sort((first, second) => (first.gender < second.gender) ? -1 : (first.gender > second.gender) ? 1 : 0) : customer?.sort((first, second) => (first.gender < second.gender) ? 1 : (first.gender > second.gender) ? -1 : 0);
-      break;
-    default:
-      return customer;
-      break;
+  //filter data
+  public sortData(field: string, customer: Customer[], flag: number) {
+    switch (field) {
+      case 'Name':
+        return (flag === 1) ? customer?.sort((data, second) => (data.name < second.name) ? -1 : (data.name > second.name) ? 1 : 0) : customer?.sort((first, second) => (first.name < second.name) ? 1 : (first.name > second.name) ? -1 : 0);
+        break;
+      case 'Email':
+        return (flag === 1) ? customer?.sort((first, second) => (first.email < second.email) ? -1 : (first.email > second.email) ? 1 : 0) : customer?.sort((first, second) => (first.email < second.email) ? 1 : (first.email > second.email) ? -1 : 0);
+        break;
+      case 'Age':
+        return (flag === 1) ? customer?.sort((first, second) => (first.age < second.age) ? -1 : (first.age > second.age) ? 1 : 0) : customer?.sort((first, second) => (first.age < second.age) ? 1 : (first.age > second.age) ? -1 : 0);
+        break;
+      case 'Gender':
+        return (flag === 1) ? customer?.sort((first, second) => (first.gender < second.gender) ? -1 : (first.gender > second.gender) ? 1 : 0) : customer?.sort((first, second) => (first.gender < second.gender) ? 1 : (first.gender > second.gender) ? -1 : 0);
+        break;
+      default:
+        return customer;
+        break;
+    }
   }
-}
 
 
 
