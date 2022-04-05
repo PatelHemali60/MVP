@@ -7,11 +7,11 @@ import { CoreModule } from './core/core/core.module';
 
 
 
+
 @NgModule({
   declarations: [
-    AppComponent,
-  
-
+    AppComponent
+ 
   ],
   imports: [
     BrowserModule,

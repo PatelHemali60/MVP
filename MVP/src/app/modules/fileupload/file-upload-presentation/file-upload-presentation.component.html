@@ -1,0 +1,24 @@
+<!-- <p>file-upload-presentation works!</p> -->
+
+<div class="art-deco m-5">
+
+    <div appFiledropzone class="container p-5 d-flex flex-column align-items-center justify-content-center"  (readFile)="readFile($event)">
+        <input type="file" name="" id="" (change)="readFile($event.target)"class="m-2">
+        <button type="button" class="btn btn-dark mt-3" (click)="uploadFile()">Upload</button>
+        <p *ngIf="file">{{file.name}} File is Ready to Upload</p>
+    </div>
+
+</div>
+
+    
+<div class="dotted text-center rounded-3 m-5 pt-5">
+    <h3>Date Picker</h3>
+    <form [formGroup]="dateForm" class="pb-5">
+        <label for="fromDate">From:</label>
+        <input type="date" id="fromDate" formControlName="fromDate" (change)="readStartDate($event)"
+            max="{{endDate}}">
+
+        <label class="ms-5" for="toDate">To:</label>
+        <input type="date" id="toDate" formArrayName="toDate" (change)="readendDate($event)" min="{{startDate}}">
+    </form>
+</div>

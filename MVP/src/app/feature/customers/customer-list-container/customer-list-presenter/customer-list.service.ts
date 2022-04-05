@@ -67,7 +67,7 @@ export class CustomerListService {
   public openFilterForm(currentList: Customer[]) {
 
     console.log(currentList, 'customer list data.....');
-debugger
+
     let componentRef: ComponentRef<FilterPresenatationComponent>;
     let overlayRef: OverlayRef;
     // set overlay config

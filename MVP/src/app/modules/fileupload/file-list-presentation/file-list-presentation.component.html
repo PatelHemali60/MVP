@@ -1,0 +1,45 @@
+<!-- <div class="container">
+    <table class="table">
+        <thead>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Type</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let filedata of fileList">
+                <td>{{filedata.name}}</td>
+                <td>{{filedata.size}} mb</td>
+                <td>{{filedata.type}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+
+<div class="container">
+    <h4 class="bg-dark text-white text-center ">List Of Files</h4>
+    <table class="table border">
+        <thead class="table-primary">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Size</th>
+                <th scope="col">Type</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let filedata of fileList">
+                <th scope="row">{{filedata.id}}</th>
+                <td>{{filedata.name}}</td>
+                <td>{{filedata.size}} mb</td>
+                <td>{{filedata.type}}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-primary" (click)="viewFile(filedata.type,filedata.content)"><span class="icon icon-images"></span></button>
+                    <button type="button" class="btn btn-outline-danger ms-3" (click)="deleteFile(filedata.id)"><span class="icon icon-bin"></span></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -10,10 +10,8 @@ import { CustomerService } from './customer.service';
 import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomersComponent } from './customers.component';
 import { FilterPresenatationComponent } from './customer-list-container/customer-list-presentation/filter-presenatation/filter-presenatation.component';
-import { SharedModule } from 'src/app/shared/shared/shared.module';
-import { PaginantionComponent } from 'src/app/shared/shared/paginantion/paginantion.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { SearchPipe } from 'src/app/shared/Pipes/search.pipe';
 
 
 
@@ -28,7 +26,6 @@ import { SearchPipe } from 'src/app/shared/Pipes/search.pipe';
     CustomerFormPresentationComponent,
     CustomerListPresentationComponent,
     FilterPresenatationComponent,
-    SearchPipe
  
   ],
   imports: [

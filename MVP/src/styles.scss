@@ -2,8 +2,11 @@
 @import "assets/scss/base/index";
 
 
-@import "assets/scss/vendor/bootstrap-base";
-@import "assets/scss/vendor/bootstrap-components";
+// @import "assets/scss/vendor/bootstrap-base";
+// @import "assets/scss/vendor/bootstrap-components";
+@import '../src/assets/scss/vendor/bootstrap-base';
+@import '../src/assets/scss/vendor/bootstrap-components';
+
 
 
 //import component

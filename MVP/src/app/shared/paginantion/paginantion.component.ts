@@ -47,6 +47,7 @@ export class PaginantionComponent implements OnInit {
   @Input() allPagesNumber!: number;
   @Output() changePage: EventEmitter<number> = new EventEmitter<number>();
   public _currentPage: number = 1;
+ 
 
   constructor() { }
 
@@ -78,6 +79,6 @@ export class PaginantionComponent implements OnInit {
   } 
 
   onPreviousPage(): void {
-    this.currentPage -= 1;
+    this.currentPage -= 1 ;
   }
 }
