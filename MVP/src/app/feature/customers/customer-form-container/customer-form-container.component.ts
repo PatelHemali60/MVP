@@ -3,7 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { observable, Observable } from 'rxjs';
 import { Category, Customer, CustomerForm } from '../customer.model';
 import { CustomerService } from '../customer.service';
+import { ToastService } from '../toast.service';
 
+
+
+ 
 @Component({
   selector: 'app-customer-form-container',
   templateUrl: './customer-form-container.component.html',
@@ -14,13 +18,16 @@ export class CustomerFormContainerComponent implements OnInit {
   public customerData$:Observable<Customer>;
   public categories$: Observable<Category[]>;
 
-  constructor(private custmerService:CustomerService, private route:Router,private ActiveRoute:ActivatedRoute) { 
+  constructor(private custmerService:CustomerService, private route:Router,private ActiveRoute:ActivatedRoute , private toastService:ToastService) { 
     this.customerData$ = new Observable();
     this.categories$ = new Observable<Category[]>();
     
   }
   
   ngOnInit(): void {
+
+  //for toster message
+
     this.urlId = this.ActiveRoute.snapshot.params['id'];
     console.log(this.urlId);
     if(this.urlId){
@@ -28,6 +35,7 @@ export class CustomerFormContainerComponent implements OnInit {
     }
     this.categories$ = this.custmerService.getCustomerCatgeroies();
   }
+ 
 
 
   //post form data
@@ -50,6 +58,12 @@ export class CustomerFormContainerComponent implements OnInit {
 
   }
 
+
+  //method for toster
+  public doToast(): void {
+
+    this.toastService.open(`Hello world ${Date.now()}`);
+  }
   
 
 }
