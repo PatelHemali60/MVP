@@ -23,6 +23,7 @@ export class FileuploadComponent implements OnInit {
   }
 
   UploadFile(file: MyFile) {
+    debugger
     this.filesList$.subscribe({
       next: (list) => {
         let isFile = list.find((el) => {

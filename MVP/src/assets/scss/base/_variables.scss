@@ -10,3 +10,47 @@ $input-border-radius:8px;
 
 
 $border-radius-50 : 50%;
+
+// All the SCSS Variables goes here
+$font-family-base: "Roboto", sans-serif;
+
+////// Bootstrap
+
+// spacer
+$spacer: 1rem;
+
+// guttter spacing
+$gutters: (
+    0: 0,
+    1: $spacer * 0.25,
+    2: $spacer * 0.5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: 1.75rem,
+);
+
+// sub heading
+$h6-font-size: 1.125rem;
+
+// form control
+$input-focus-box-shadow: none;
+$input-border-radius: 6px;
+$input-padding-x: 1.75rem;
+
+// form floating
+$form-floating-height: auto;
+$form-floating-line-height: 1;
+$form-floating-padding-x: 0.75rem;
+$form-floating-padding-y: 0.875rem;
+$form-floating-input-padding-t: $form-floating-padding-y;
+$form-floating-input-padding-b: $form-floating-padding-y;
+$form-floating-label-opacity: 1;
+$form-floating-label-transform: scale(0.75) translateY(-1.5rem) translateX(0.5rem);
+$form-floating-transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+$form-floating-bg-color: white;
+
+
+// buttons
+$btn-border-radius: 12px;
+$btn-padding-y: 0.625rem;
+$btn-padding-x: 4rem;

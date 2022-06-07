@@ -7,12 +7,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 // import { ReactiveFormsModule } from '@angular/forms';
 
-import {  HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RagistrationFormComponent } from './component/Medify/ragistration-form.component';
+
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     SidebarComponent,
+    RagistrationFormComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
@@ -20,8 +25,10 @@ import {  HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     BrowserModule
   ],
-  exports:[
+  exports: [
     SidebarComponent,
+    RagistrationFormComponent,
+
   ]
 })
 export class CoreModule { }

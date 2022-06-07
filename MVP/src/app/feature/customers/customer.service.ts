@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Category, Customer, CustomerForm } from './customer.model';
+import { cars, Category, Customer, CustomerForm } from './customer.model';
 
 @Injectable()
 export class CustomerService {
+  
   baseurl = environment.baseURL;
   constructor(private http:HttpClient) { }
 
@@ -33,6 +34,11 @@ export class CustomerService {
   //get data of perticular id
   getCustomerById(id:string):Observable<Customer>{
     return this.http.get<Customer>(`${this.baseurl}/Customer/${id}`)
+  }
+
+   //get data of cars
+   getcars():Observable<cars[]>{
+    return this.http.get<cars[]>(`${this.baseurl}/cars`)
   }
 
   //editCustomer

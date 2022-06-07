@@ -16,29 +16,55 @@
     </li>
 </ul> -->
 
-<nav aria-label="..." class="m-2">
+ <nav aria-label="..." class="m-2">
 
     <ul class="pagination">
 
         <li class="page-item" [ngClass]="{disable:currentPage === 1 && 'pagination__button--disabled'}"
         (click)="onFirstPage()">
-        <a class="page-link" href="#">First</a>
+        <a class="page-link">First</a>
     </li>
         <li class="page-item" [ngClass]="{disable:currentPage === 1 && 'pagination__button--disabled'}"
-            (click)="onPreviousPage()" class="page-item first-item"> <a class="page-link" href="#">Previous</a>
+            (click)="onPreviousPage()" class="page-item first-item"> <a class="page-link" >Previous</a>
         </li>
         <li class="page-item active ">
-           <span class="page-link"><input class="pagination__current-page" (input)="onSetPage($event)" [value]="currentPage"></span> 
+           <span class="page-link"><input class="pagination__current-page" (input)="onSetPage($event)" [value]="currentPage"></span>  
             <!--/ <label>{{allPagesNumber}}</label> -->
 
-        </li>
-        <li [ngClass]="{disable:currentPage === allPagesNumber && 'pagination__button--disabled'}"
-            (click)="onNextPage()" class="page-item ">
-            <a class="page-link" href="#">Next</a>
+         </li>
+        <li [ngClass]="{disable:currentPage === allPagesNumber && 'pagination__button--disabled'}"(click)="onNextPage()" class="page-item ">
+            <a class="page-link" >Next</a>
         </li>
         <li class="page-item" [ngClass]="{disable:currentPage === allPagesNumber && 'pagination__button--disabled'}"
             (click)="onLastPage()" class="page-item first-item">
-            <a class="page-link" href="#">Last</a>
+            <a class="page-link" >Last</a>
         </li>
     </ul>
 </nav>
+<!-- <ul class="pagination ">
+    <li class="pagination__button pagination__page-first"
+        [ngClass]="{disable:currentPage === 1 && 'pagination__button--disabled'}" (click)="onFirstPage()"
+        class="page-item first-item">
+        First
+    </li>
+    <li class="pagination__button pagination__page-previous"
+        [ngClass]="{disable:currentPage === 1 && 'pagination__button--disabled'}" (click)="onPreviousPage()"
+        class="page-item first-item">
+        Previous
+    </li>
+    <li class="d-flex align-items-center">
+        <input class="pagination__current-page" (input)="onSetPage($event)" [value]="currentPage"> /
+        <label>{{allPagesNumber}}</label>
+    </li>
+    <li class="pagination__button pagination__page-next"
+        [ngClass]="{disable:currentPage === allPagesNumber && 'pagination__button--disabled'}" (click)="onNextPage()"
+        class="page-item first-item">
+        Next
+    </li>
+    <li class="pagination__button pagination__page-last"
+        [ngClass]="{disable:currentPage === allPagesNumber && 'pagination__button--disabled'}" (click)="onLastPage()"
+        class="page-item first-item">
+        Last
+    </li>
+</ul> 
+ -->

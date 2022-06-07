@@ -10,13 +10,19 @@ export class CustomerFormService {
 
   public CustomerData:Subject<CustomerForm>;
   public CustomerData$:Observable<CustomerForm>;
+ public phonenumber : string;
 
   constructor(private fb:FormBuilder)
    {
      this.CustomerData = new Subject();
     this.CustomerData$ = this.CustomerData.asObservable();
-    }
+    this.phonenumber = '';
+  }
 
+  /**
+   * @name buildform
+   *  @description it builds customer form
+   */
     //creatform group
     buildFormGroup(){
       return this.fb.group({
@@ -24,13 +30,16 @@ export class CustomerFormService {
         age:['',Validators.required],
         email:['',Validators.email],
         gender:['',Validators.required],
-        category:[]
+        phoneNumber:['', [Validators.required, Validators.minLength(15)]],
+        category:[],
+        cars:[]
       })
     
     }
     //end of the form group
 
-    onSubmit(CustomerForm:FormGroup){
+   public onSubmit(CustomerForm: FormGroup){
+      // this.phonenumber = CustomerForm.phoneNumber.replace(/\s|-|\+91/g, '');
       if(!CustomerForm.valid){
         return
       }
@@ -38,8 +47,7 @@ export class CustomerFormService {
         this.CustomerData.next(CustomerForm.value)
       }
     }
-  
 
-   
+  
     
 }

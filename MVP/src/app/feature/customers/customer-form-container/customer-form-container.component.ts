@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { observable, Observable } from 'rxjs';
-import { Category, Customer, CustomerForm } from '../customer.model';
+import { cars, Category, Customer, CustomerForm } from '../customer.model';
 import { CustomerService } from '../customer.service';
 import { ToastService } from '../toast.service';
 
@@ -16,11 +16,19 @@ import { ToastService } from '../toast.service';
 export class CustomerFormContainerComponent implements OnInit {
   private urlId:string ='';
   public customerData$:Observable<Customer>;
+
+  //for categories
   public categories$: Observable<Category[]>;
 
+  //for cars
+  public cars$ : Observable<cars[]>;
+
   constructor(private custmerService:CustomerService, private route:Router,private ActiveRoute:ActivatedRoute , private toastService:ToastService) { 
+    
     this.customerData$ = new Observable();
     this.categories$ = new Observable<Category[]>();
+    //for get cars
+    this.cars$ = new Observable<cars[]>();
     
   }
   
@@ -33,7 +41,11 @@ export class CustomerFormContainerComponent implements OnInit {
     if(this.urlId){
       this.customerData$ = this.custmerService.getCustomerById(this.urlId);
     }
+    //for get the value of categories
     this.categories$ = this.custmerService.getCustomerCatgeroies();
+
+    //for get value of cars
+    this.cars$ = this.custmerService.getcars();
   }
  
 

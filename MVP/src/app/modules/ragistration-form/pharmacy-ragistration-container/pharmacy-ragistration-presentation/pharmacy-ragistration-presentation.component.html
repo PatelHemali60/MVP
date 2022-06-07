@@ -1,0 +1,91 @@
+<div class="wrapper p-4">
+    <div class="d-flex flex-column">
+        <!-- Heading -->
+        <div class="text-end fw-medium">
+            <span>Already have an account? <a routerLink="signIn" class="text-info">Sign In</a></span>
+        </div>
+        <h6 class="text-info">Sign Up</h6>
+        <span class="fs-4 fw-medium mt-2">Set Pharmacy's profile here</span>
+        <!-- Start: Form -->
+        <form>
+            <div class="row g-5 mt-2">
+                <!-- Email Input -->
+                <div class="form-floating col-12">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="Email address" autofocus>
+                    <label for="floatingInput">
+                        <span class="label-floating-text text-secondary">Email ID</span>
+                    </label>
+                </div>
+                <!-- Password Input -->
+                <div class="form-floating col-6">
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <label for="password">
+                        <span class="label-floating-text text-secondary">Password</span>
+                    </label>
+                </div>
+                <!-- Confirm Password Input -->
+                <div class="form-floating col-6">
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                    <label for="confirmPassword">
+                        <span class="label-floating-text text-secondary">Confirm Password</span>
+                    </label>
+                </div>
+                <!-- Name of Pharmacy Input -->
+                <div class="form-floating col-12">
+                    <input type="text" class="form-control" id="nameOfPharmacyStore" placeholder="Name of Pharmacy Store">
+                    <label for="nameOfPharmacyStore">
+                        <span class="label-floating-text text-secondary">Name of Pharmacy Store</span>
+                    </label>
+                </div>
+                <!-- Date of Establishment Input -->
+                <div class="form-floating col-6">
+                    <input type="date" class="form-control" id="dateOfEstablishment"
+                    placeholder="Date of Establishment">
+                    <label for="dateOfEstablishment">
+                        <span class="label-floating-text text-secondary">Date of Establishment</span>
+                    </label>
+                </div>
+                <!-- Mobile number Input -->
+                <div class="form-floating col-6">
+                    <input type="text" class="form-control" id="mobileNo" placeholder="Mobile No">
+                    <label for="mobileNo">
+                        <span class="label-floating-text text-secondary">Mobile No</span>
+                    </label>
+                </div>
+                <!-- Certificate of pharmacy file Input -->
+                <div class="col-6 form-floating">
+                    <input type="text" class="form-control" id="certificateOfPharmacyFilename"
+                        placeholder="Certificate of Pharmacy">
+                    <label for="certificateOfPharmacyFilename">
+                        <span class="label-floating-text text-secondary">Certificate of Pharmacy</span>
+                    </label>
+                    <span
+                    class="icon icon-attachment fs-6 pe-4 position-absolute top-50 translate-middle-y end-0"></span>
+                    <input type="file" class="opacity-0" id="certificateOfPharmacist"
+                    placeholder="Degree/Certificate of Pharmacist">
+                </div>
+                <!-- Certificate of pharmacist file Input -->
+                <div class="col-6 form-floating">
+                    <input type="text" class="form-control" id="certificateOfPharmacistFilename"
+                        placeholder="Degree/Certificate of Pharmacist">
+                    <label for="certificateOfPharmacistFilename">
+                        <span class="label-floating-text text-secondary">Degree/Certificate of Pharmacist</span>
+                    </label>
+                    <span
+                        class="icon icon-attachment fs-6 pe-4 position-absolute top-50 translate-middle-y end-0"></span>
+                    <input type="file" class="opacity-0" id="certificateOfPharmacist"
+                        placeholder="Degree/Certificate of Pharmacist">
+                </div>
+                <!-- cancel btn -->
+                <div class="col-6 text-end">
+                    <button class="btn btn-outline-primary mt-4">Cancel</button>
+                </div>
+                <!-- signUp btn -->
+                <div class="col-6">
+                    <button class="btn btn-primary mt-4">Sign Up</button>
+                </div>
+            </div>
+        </form>
+        <!-- End: Form -->
+    </div>
+</div>

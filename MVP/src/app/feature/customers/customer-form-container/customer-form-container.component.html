@@ -1,3 +1,6 @@
 <p>customer-form-container works!</p>
 
-<app-customer-form-presentation [customerData]="customerData$ | async" [customerCategories]="categories$ | async"(addUser)="onsubmit($event)" (editUser)="editCustomer($event)" ></app-customer-form-presentation>
+<app-customer-form-presentation [customerData]="customerData$ | async" [customerCategories]="categories$  | async"  [Cars]="cars$ | async" (addUser)="onsubmit($event)" (editUser)="editCustomer($event)" ></app-customer-form-presentation>
+
+
+<button (click)="doToast()">doToast()</button>

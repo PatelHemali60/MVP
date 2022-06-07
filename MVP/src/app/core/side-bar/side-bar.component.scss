@@ -1,0 +1,46 @@
+.image1 {
+  height: 300px;
+  width: 320px;
+  position: absolute;
+  bottom: 80px;
+  left: 100px;
+  z-index: 100;
+}
+
+.circle1 {
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  right: -30px;
+  top: 0;
+  height: 70px;
+  width: 70px;
+  
+  border-radius: 50%;
+}
+.circle2 {
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    right: -20px;
+    top: 200px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+  .circle3 {
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 120px;
+    height: 30px;
+    width: 30px;
+    
+    border-radius: 50%;
+  }
+
+

@@ -1,0 +1,33 @@
+<div class=" row m-5 p-3">
+    <!-- <div class="col-12">
+        <app-post-creat (postCreated)="onPostAdded($event)"></app-post-creat>
+    </div>
+
+    <app-post-list [posts]="storedPosts"></app-post-list> -->
+
+
+    <div class="col-12">
+        <form [formGroup]="mydieaseForm">
+            <!-- (ngSubmit)="onSubmit()" -->
+            <div class="row">
+                <!-- <div class="col-6">
+    
+                    <label for="firstName">Email address</label>
+                    <input type="text" id="firstName" class="form-control" placeholder="Enter First Name">
+                </div> --> 
+                <div class="col-8 d-flex">
+                    <label for="person">Select Diseases</label>
+    
+                    <ng-select [items]="Diseases" [multiple]="true" bindLabel="name" [closeOnSelect]="false" bindValue="id"
+                        [(ngModel)]="selectedDiseases" formControlName="diseases" [maxSelectedItems]="9">
+                        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                            <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" [ngModelOptions]="{ standalone : true }"/> {{item.name}}
+                        </ng-template>
+                    </ng-select>
+                    <button class="ms-5 btn-sm btn-primary" (click)="onSubmit()">ADD Diseases</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- ng multi select -->

@@ -75,7 +75,7 @@ export class CustomerListService {
 
     overlayConfig.hasBackdrop = true;
     overlayConfig.positionStrategy = this.overlay.position().global().centerHorizontally().right()
-
+// debugger
 
     // create overlay reference
     overlayRef = this.overlay.create(overlayConfig);

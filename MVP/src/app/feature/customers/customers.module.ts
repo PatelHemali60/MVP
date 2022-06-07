@@ -12,6 +12,8 @@ import { CustomersComponent } from './customers.component';
 import { FilterPresenatationComponent } from './customer-list-container/customer-list-presentation/filter-presenatation/filter-presenatation.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastService } from './toast.service';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -36,10 +38,11 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     ReactiveFormsModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    NgSelectModule
     
   ],
-  providers:[CustomerService]
+  providers:[CustomerService,ToastService]
   
 })
 export class CustomersModule { }

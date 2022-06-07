@@ -75,6 +75,7 @@ export class PaginantionComponent implements OnInit {
   }
 
   onNextPage(): void {
+ 
     this.currentPage += 1;
   } 
 

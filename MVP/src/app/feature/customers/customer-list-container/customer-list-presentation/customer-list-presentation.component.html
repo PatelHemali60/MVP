@@ -12,7 +12,8 @@
         <button class="btn btn-primary" (click)="searchData()">Search</button>
       </div> -->
       <form class="form-inline d-flex border">
-        <input class="form-control" name="search" class="input" type="text" placeholder="Search" aria-label="Search " [(ngModel)]="search" >
+        <input class="form-control" name="search" class="input" type="text" placeholder="Search" aria-label="Search "
+          [(ngModel)]="search">
         <!-- <button class="btn btn-primary btn-sm" type="submit"><span class="icon icon-search"></span></button> -->
       </form>
 
@@ -47,7 +48,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="align-middle" *ngFor="let item of customerListtemp  | searchText:search">
+      <!-- | searchText:search -->
+      <tr class="align-middle" *ngFor="let item of customerListtemp  ">
         <td>{{ item.id }}</td>
         <td>{{ item.name }}</td>
         <td>{{ item.age }}</td>
@@ -68,6 +70,11 @@
       </tr>
     </tfoot>
   </table>
+  <div class="col-12 d-flex justify-content-center m-4">
+   <!-- paginantion selector-->
+    <app-paginantion [allPagesNumber]="allPages" (changePage)="onPageChange($event)"> </app-paginantion>
+  </div>
+
 
   <!-- paginantion-->
   <!-- dont delete code-->
@@ -88,9 +95,6 @@
     </ul>
   </nav> -->
   <!-- pagination start-->
-  <div class="col-12 d-flex justify-content-center m-4">
 
-    <app-paginantion [allPagesNumber]="allPages" (changePage)="onPageChange($event)"> </app-paginantion>
-  </div>
 
 </div>

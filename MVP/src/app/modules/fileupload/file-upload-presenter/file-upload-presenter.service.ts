@@ -8,6 +8,7 @@ import { MyFile } from '../model/File.model';
 export class FileUploadPresenterService {
 
   private file: MyFile;
+  // public filess: any[] = [];
   private _fileToUpload: Subject<MyFile>;
   public fileToUpload$: Observable<MyFile>;
 
@@ -28,7 +29,7 @@ export class FileUploadPresenterService {
 
   uploadFile(file: File) {
     //size in mb
-    debugger
+    // debugger
     let size = Math.round(file.size / 1024 / 1024)
     if (size <= 2) {
       this.file.name = file.name;
@@ -38,6 +39,7 @@ export class FileUploadPresenterService {
         const reader = new FileReader();
     
         reader.readAsDataURL(file);
+        //evnt is fired when filread succesfully
         reader.onload = (event) => {
           this.file.content = event.target?.result as string;
           this._fileToUpload.next(this.file); 
@@ -47,6 +49,41 @@ export class FileUploadPresenterService {
       alert("File Size is above 2mb")
     }
   }
+  // uploadFile(file: MyFile[]) {
+  //   //size in mb
+  //   console.log(typeof(file));
+    
+  //   // for (const files  in file) {
+  //   //   console.log(file[files].name);
+  //   // }
+  //   // file.forEach((item) => {
+  //   //   console.log(item.name)
+  //   // });
+
+  //   // for (let i = 0; i < file.length; i++) {
+
+  //   //  console.log(files);
+
+  //     let size = Math.round( / 1024 / 1024)
+  //      if (size <= 2) {
+  //      this.file.name = file.name;
+  //     this.file.size = size;
+  //      this.file.type = file.type;
+  //    // console.log(file.type)
+  //       const reader = new FileReader();
+
+  //       reader.readAsDataURL(files);
+  //       reader.onload = (event) => {
+  //         this.file.content = event.target?.result as string;
+  //         this._fileToUpload.next(this.file);
+  //       }
+  //     }
+
+  //     else {
+  //       alert("File Size is above 2mb")
+  //     }
+  //   // }
+  // }
 
 
 }

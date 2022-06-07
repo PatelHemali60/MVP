@@ -1,0 +1,11 @@
+.btn {
+  @include button-size(0.4rem, 0.8rem, 20px, 0);
+}
+.borderLeft {
+ border-radius: 0 10px 10px 0;
+}
+.borderRight{
+    border-radius: 10px 0 0 10px ;
+}
+
+

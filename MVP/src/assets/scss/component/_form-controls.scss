@@ -1,0 +1,34 @@
+
+.form-floating {
+   
+    
+    label{
+        background-color: white;
+    }
+    .form-control ~ label {
+        padding: 0.75rem 1.5rem;
+
+        & > .label-floating-text {
+            background-color: $form-floating-bg-color;
+            padding: 0 0.25rem;
+        }
+    }
+    .form-control:focus ~ label > .label-floating-text {
+        color: $primary !important;
+    }
+}
+
+#certificateOfPharmacist {
+    @include position(absolute, 0, 14px, 0, 14px);
+    z-index: 1000;
+    cursor: pointer;
+}
+
+//remove range from input type number
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

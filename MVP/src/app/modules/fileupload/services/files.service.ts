@@ -13,6 +13,7 @@ export class FilesService {
   constructor(private http: HttpClient) { }
 
   getAllFiles(): Observable<MyFile[]> {
+    // debugger
     return this.http.get<MyFile[]>(this.apiUrl);
   }
 

@@ -3,9 +3,9 @@
 <div class="art-deco m-5">
 
     <div appFiledropzone class="container p-5 d-flex flex-column align-items-center justify-content-center"  (readFile)="readFile($event)">
-        <input type="file" name="" id="" (change)="readFile($event.target)"class="m-2">
+        <input type="file" name="" id="" (change)="readFile($event.target)"class="m-2"  multiple>
         <button type="button" class="btn btn-dark mt-3" (click)="uploadFile()">Upload</button>
-        <p *ngIf="file">{{file.name}} File is Ready to Upload</p>
+        <!-- <p *ngIf="file">{{file.name}} File is Ready to Upload</p> -->
     </div>
 
 </div>

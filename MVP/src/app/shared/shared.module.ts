@@ -4,6 +4,7 @@ import { PaginantionComponent } from './paginantion/paginantion.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from './Pipes/search.pipe';
 import { FiledropzoneDirective } from './directive/file-drop-zone.directive';
+import { PhoneMaskingDirective } from './directive/phone-masking.directive';
 
 
 
@@ -13,6 +14,7 @@ import { FiledropzoneDirective } from './directive/file-drop-zone.directive';
     PaginantionComponent,
     SearchPipe,
     FiledropzoneDirective,
+    PhoneMaskingDirective,
     
   
   ],
@@ -20,7 +22,9 @@ import { FiledropzoneDirective } from './directive/file-drop-zone.directive';
     CommonModule,
     FormsModule
   ],
-  exports: [PaginantionComponent
+  exports: [
+    PhoneMaskingDirective,
+    PaginantionComponent
   , SearchPipe,
   FiledropzoneDirective]
 })

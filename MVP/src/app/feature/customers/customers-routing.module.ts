@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/Auth-guard/auth.guard';
 import { CustomerFormContainerComponent } from './customer-form-container/customer-form-container.component';
 import { CustomerListContainerComponent } from './customer-list-container/customer-list-container.component';
 import { CustomersComponent } from './customers.component';
@@ -15,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: 'add',
-        component: CustomerFormContainerComponent
+        component: CustomerFormContainerComponent, canActivate: [AuthGuard]
       },
       {
         path: 'edit/:id',

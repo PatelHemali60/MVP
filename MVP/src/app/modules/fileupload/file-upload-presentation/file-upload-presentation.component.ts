@@ -32,19 +32,25 @@ export class FileUploadPresentationComponent implements OnInit {
     this._fileUploadPrensenter.fileToUpload$.subscribe({
       next: (file) => {
         this.fileToUpload.emit(file);
+        // debugger
       },
       error: (e) => { console.log(e) }
     })
   }
 
   readFile(files: any) {
+ 
     this.file = files.files[0];
+    // const numberOfFiles = this.file.length;
+    // console.log(this.file);
+    
   }
 
   uploadFile() {
-    debugger
+  
     if (this.file) {
-      this._fileUploadPrensenter.uploadFile(this.file)
+    
+        this._fileUploadPrensenter.uploadFile(this.file)
     }
     else {
       alert("No File is Selected")

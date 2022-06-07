@@ -71,6 +71,7 @@ export class CustomerListPresentationComponent implements OnInit {
 
   //lifecycel hook for paginantion
   ngOnChanges(changes: SimpleChanges) {
+    alert('ok');
     if (changes['customerList'].currentValue = ! null) {
 
       this.onPageChange();
@@ -90,10 +91,10 @@ export class CustomerListPresentationComponent implements OnInit {
     //for filter data subscribe here  
     this.customerListservice.Filter$.subscribe(res => {
       this.isActivatedFilter = true;
- this.cdr.markForCheck();
+      this.cdr.markForCheck();
       //check wathere data is avilabe or not
       this.customerListtemp = res;
-      console.log(this.customerListtemp, 'hemali here........');
+      // console.log(this.customerListtemp, 'hemali here........');
 
     })
 
@@ -117,6 +118,7 @@ export class CustomerListPresentationComponent implements OnInit {
 
   public FilterForm() {
     // console.log()
+
     this.customerListservice.openFilterForm(this.customerListtemp);
   }
 

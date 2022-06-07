@@ -1,8 +1,6 @@
-<p>customer-form-presentation works!</p>
+<div class="toast-message ">{{message}}</div>
 
-
-
-<div class="container-fluid p-5 divform h-100 bg-secondary text-white">
+<div class="container-fluid p-5 divform h-100 bg-light ">
 
     <div class="form-modal rounded">
         <div class="d-flex justify-content-between">
@@ -48,8 +46,8 @@
 
                 <div *ngIf="( customerFormControl['age'].dirty ||   customerFormControl['age'].touched ) &&   customerFormControl['age'].invalid
                 || isFormSubmitted &&   customerFormControl['age'].invalid" class="p-1 text-danger">* This Field is
-                      Required
-                  </div>
+                    Required
+                </div>
 
             </div>
 
@@ -73,6 +71,38 @@
             </div>
 
             <!-- end gender-->
+
+            <!-- Mobile Number -->
+            <div>
+                <div class="form-floating mb-3 mt-sm-4"
+                    *ngIf="{ 'invalid': ( customerFormControl['phoneNumber'].dirty || customerFormControl['phoneNumber'].touched || isFormSubmitted ) && customerFormControl['phoneNumber'].invalid }">
+                    <input type="text" formControlName="phoneNumber" class="form-control" id="phoneNumber"
+                        placeholder="Mobile No" appPhoneMasking maxlength="15">
+                    <label for="phoneNumber">
+                        <span class="label-floating-text">Mobile No</span>
+                    </label>
+                    <!-- Mobile number validations -->
+                    <div class="validation-text mt-1">
+                        <div class="d-flex">
+                            <span class="icon icon-alert fs-5 me-2"></span>
+                            <span
+                                *ngIf="customerFormControl['phoneNumber'].errors && customerFormControl['phoneNumber'].errors['required']"
+                                class="text-danger">Mobile number is required.
+                            </span>
+                            <span
+                                *ngIf="customerFormControl['phoneNumber'].errors && (customerFormControl['phoneNumber'].errors['minlength'] || customerFormControl['phoneNumber'].errors['maxlength'])"
+                                class="text-danger">Mobile number must be 10 digits long.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- for mobile number -->
+                <div *ngIf="( customerFormControl['gender'].dirty ||   customerFormControl['gender'].touched ) &&   customerFormControl['gender'].invalid
+            || isFormSubmitted &&   customerFormControl['gender'].invalid" class="p-1 text-danger">* This Field is
+                    Required </div>
+            </div>
+            <!-- end of phoneNumber -->
             <!-- categories-->
             <div class="mb-3">
                 <label for="age" class="form-label pe-4">Select categories</label>
@@ -90,8 +120,28 @@
 
             <!--end categories-->
 
-            <button type="submit" class="btn btn-primary me-2 btn-lg" (click)="onSubmit()">Submit</button>
-            <button type="button" class="btn btn btn-success  btn-lg" (click)="onCancel()">Cancel</button>
+            <!-- carname -->
+            <!-- <ng-select [(ngModel)]="index">
+                <ng-option *ngFor="let car of Cars" [value]="car.id">{{car.carname}}</ng-option>
+            </ng-select> -->
+            <!--Ng select for cars-->
+            <!-- <ng-select [items]="Cars" bindLabel="carname" bindValue="id">
+                    </ng-select> -->
+            <!-- end of ng select -->
+            <!-- <div>
+                <ng-select [items]="cars" bindLabel="name" placeholder="Select city">
+                </ng-select>
+            </div> -->
+            <ng-select [items]="Cars" [multiple]="false" bindLabel="carname" [closeOnSelect]="false" bindValue="id"
+                [(ngModel)]="selected">
+                <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                    <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"
+                        [ngModelOptions]="{ standalone : true }" /> {{item.name}}
+                </ng-template>
+            </ng-select>
+
+            <button type="submit" class="btn-sm btn-primary me-2 " (click)="onSubmit()">Submit</button>
+            <button type="button" class="btn-sm btn-success " (click)="onCancel()">Cancel</button>
 
         </form>
 
@@ -99,77 +149,4 @@
 </div>
 
 
-
-<!-- form continer
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-6">
-            <div class="form-modal rounded p-3">
-                <div class="d-flex justify-content-between">
-                    <h2 class="text-center"></h2> -->
-                    <!-- <a (click)="onCancel()" class="text-decoration-none">&times;</a> -->
-                <!-- </div>
-                <form [formGroup]="customerForm">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" formControlName="name"> -->
-                        <!-- <div *ngIf="(userFormControl.name.dirty || userFormControl.name.touched) && userFormControl.name.invalid
-                || isFormSubmitted && userFormControl.name.invalid" class="p-1">
-                <div *ngIf="userFormControl.name.errors?.required" class="text-danger">
-                  Name is required
-                </div>
-              </div> -->
-                    <!-- </div>
-                    <div class="mb-3">
-                        <label for="age" class="form-label">Age</label>
-                        <input type="text" class="form-control" id="age" formControlName="age"> -->
-                        <!-- <div *ngIf="(userFormControl.age.dirty || userFormControl.age.touched) && userFormControl.age.invalid
-                || isFormSubmitted && userFormControl.age.invalid" class="p-1">
-                <div *ngIf="userFormControl.age.errors?.required" class="text-danger">
-                  Age is required
-                </div>
-              </div> -->
-                    <!-- </div>
-                    <div class="mb-3">
-                        <label>email</label><br>
-                        <input type="text" class="user-input form-control" name="email" formControlName="email"
-                            placeholder="enter your email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="age" class="form-label pe-4">Gender </label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male"
-                                formControlName="gender">
-                            <label class="form-check-label" for="inlineRadio1">Male</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female"
-                                formControlName="gender">
-                            <label class="form-check-label" for="inlineRadio2">Female</label>
-                        </div> -->
-                        <!-- <div *ngIf="(userFormControl.gender.dirty || userFormControl.gender.touched) && userFormControl.gender.invalid
-                || isFormSubmitted && userFormControl.gender.invalid" class="p-1">
-                <div *ngIf="userFormControl.gender.errors?.required" class="text-danger">
-                  Gender is required
-                </div>
-              </div> -->
-                    <!-- </div>
-                    <div class="mb-3">
-                        <label for="age" class="form-label pe-4">Select categories</label>
-                        <div class="form-check form-check-inline">
-                            <select name="categories" id="categories" formControlName="category">
-                                <option value="" selected>Select Category</option>
-                                <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary me-2" (click)="onSubmit()">Submit</button>
-                    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-</div> -->
 <!-- end of form continer-->
